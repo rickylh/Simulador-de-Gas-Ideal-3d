@@ -1,0 +1,14 @@
+#version 330
+
+layout (location = 0) in vec3 posicao;
+
+out vec4 color;
+
+uniform mat4 transformacao;
+uniform mat4 visualizacao;
+uniform mat4 projecao;
+
+void main() {
+	gl_Position = projecao * visualizacao * transformacao * vec4(posicao, 1.0);
+	color = vec4(clamp(posicao, 0.0, 1.0), 1.0f);
+}
